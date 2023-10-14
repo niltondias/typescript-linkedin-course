@@ -16,14 +16,6 @@ const dataConnection = (
     return `mongodb://${userName}:${password}@${mongoDbHost}:${mongoDbPort}/${mongoDbName}`;
 }
 
-// convert it to typescript notation
-const PORT: number = 3000;
-const userName: string = "meuusuario";
-const password: string = "minhasenha";
-const mongoDbPort: number = 27017;
-const mongoDbName: string = "meubanco";
-const mongoDbHost: string = "db";
-
 // instance of Messenger class
 const messenger = new Messenger(Settings.PORT);
 const uri: string = dataConnection(Settings.MONGO_USER, Settings.MONGO_PASSWORD, Settings.MONGO_PORT, Settings.MONGO_DB, Settings.MONGO_HOST);
@@ -40,6 +32,24 @@ app.use(bodyParser.json());
 
 routes(app);
 
+// // Testing interfaces
+// interface Name {
+//     first: string;
+// }
+
+// // function with interface
+// const nameCreator = (name: Name): string => {
+//     return `Hello ${name.first},`;
+// }
+// let myName: Name = { first: 'John' };
+
+// generics function
+function nameCreator<T>(name: T): T {
+    return name;
+}
+
+let myName = nameCreator<string>('John,');
+
 // serving static files
 app.use(express.static('public'));
 
@@ -47,7 +57,7 @@ app.get('/', (req, res) =>
     res.send(messenger.messagePrint())
 );
 
-app.listen(Settings.PORT, () =>
-    console.log(messenger.messagePrint())
+app.listen(Settings.PORT, '0.0.0.0', () =>
+    console.log(myName, messenger.messagePrint())
 );
 

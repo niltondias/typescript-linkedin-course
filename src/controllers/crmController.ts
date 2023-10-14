@@ -29,6 +29,13 @@ export const getContactWithID = (req, res) => {
             res.send(err);
         }
         res.json(contact);
+        // show the contact
+        for (let item of contact) {
+            console.log(item);
+        }
+        for (let item in contact) {
+            console.log(item);
+        }
     });
 }
 

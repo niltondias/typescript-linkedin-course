@@ -1,5 +1,5 @@
 export enum Settings {
-    PORT = 4000,
+    PORT = 3000,
     MONGO_URL = 'mongodb://localhost/CRMdb',
     MONGO_USER = 'meuusuario',
     MONGO_PASSWORD = 'minhasenha',
